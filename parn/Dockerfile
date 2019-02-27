@@ -6,4 +6,5 @@ WORKDIR $APPLICATION_ROOT
 
 COPY . /app/
 
-RUN pip install django
+RUN pip install django \
+   psycopg2-binary==2.7.5

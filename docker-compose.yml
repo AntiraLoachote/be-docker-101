@@ -4,6 +4,17 @@ services:
       build:
           context: ./parn
           dockerfile: Dockerfile
-      command: python3 django101/manage.py runserver 0.0.0.0:8000
+      command: bash -c "chmod +x ./entrypoint.sh && ./entrypoint.sh"
       ports:
         - "8000:8000"
+      volumes:
+        - ./parn:/app
+    db:
+      image: postgres
+      volumes:
+        - postgres-data:/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+
+volumes:
+  postgres-data:
